@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Volleyball Products</title>
+     <link rel="stylesheet" href="css/style.css">
+    <style>
+        h1{
+            text-align: center;
+        }
+        .products{
+    display:flex;
+    flex-wrap:wrap;
+    gap:30px;
+}
+.card21,.card22,.card23,.card24,.card25,.card26,.card27,.card28,.card29,.card30{
+    width:250px;
+    text-align:center;
+    padding:20;
+    box-shadow:0 4px 10px gray;
+    border-radius:150px;
+    border-left: 150px;
+}
+    </style>
+</head>
+<body>
+    <!--VOLLEYBALL SECTION-->
+<h2 style="text-align: center;">Volleyball </h2>
+<section id="volleyball" class="category3">
+
+<div class="card21">
+    <img src="images/volleyball.jpg" width="150">
+    <h2>Volleyball</h2>
+    <p>₹1000</p>
+    <button onclick="addToCart('Volleyball',1000)">Add to Cart</button>
+</div>
+
+<div class="card22">
+    <img src="images/net.webp" width="150">
+    <h2>Blumax Volleyball Net Blue Nylon Volleyball Net</h2>
+    <p>₹349</p>
+    <button onclick="addToCart('Blumax Volleyball Net',349)">Add to Cart</button>
+</div>
+
+<div class="card23">
+    <img src="images/kneepad.webp" width="150">
+    <h2>Nivia Volleyball Knee Pads</h2>
+    <p>₹150</p>
+    <button onclick="addToCart('Manibam Impex Protective Knee Pad',455)">Add to Cart</button>
+</div>
+
+<div class="card24">
+    <img src="images/volleyball ball.webp" width="150">
+    <h2>Cosco Champion Volleyball</h2>
+    <p>₹750</p>
+    <button onclick="addToCart('Cosco Champion Volleyball',750)">Add to Cart</button>
+</div>
+
+<div class="card25">
+    <img src="images/jersey volleyballl.webp" width="150">
+    <h2>Volleyball Sports Jersey</h2>
+    <p>₹329</p>
+    <button onclick="addToCart('Volleyball Sports Jersey',329)">Add to Cart</button>
+</div>
+
+<div class="card26">
+    <img src="images/shoes volleyball.webp" width="150">
+    <h3>ASICS Sky Elite Volleyball Shoes</h3>
+    <p>₹9749</p>
+    <button onclick="addToCart('Volleyball Shoes',9749)">Add to Cart</button>
+</div>
+
+<div class="card27">
+    <img src="images/shoes2 volleyball.webp" width="150">
+    <h3>Mizuno Wave Lightning Z7 Volleyball Shoes</h3>
+    <p>₹9049</p>
+    <button onclick="addToCart('Volleyball Shoes',9049)">Add to Cart</button>
+</div>
+
+<div class="card28">
+    <img src="images/jersey volleyball1.webp" width="150">
+    <h3>Teamwear India Personalized Sports Kit</h3>
+    <p>₹999</p>
+    <button onclick="addToCart('Volleyball Jersey',999)">Add to Cart</button>
+</div>
+<div class="card29">
+    <img src="images/batminton.webp" width="150">
+    <h3>SOLPRO VORTEK 3000 Badminton Racket Set</h3>
+    <p>₹429</p>
+    <button onclick="addToCart('batminton racket',429)">Add to Cart</button>
+</div>
+<div class="card30">
+    <img src="images/shoesss.webp" width="150">
+    <h3>Puma Men's Galaxis Pro Running Shoes</h3>
+    <p>₹2500</p>
+    <button onclick="addToCart('Shoes',2500)">Add to Cart</button>
+</div>
+</section>
+
+<script>
+function addToCart(name, price){
+
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    cart.push({
+        name: name,
+        price: price,
+        quantity: 1
+    });
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+
+    alert(name + " added to cart!");
+}
+</script>
+</body>
+</html>

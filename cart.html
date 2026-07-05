@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Zyvo Sports Cart</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    background:#eef4ff;
+}
+
+/* NAVBAR */
+header{
+    background:linear-gradient(90deg,#001f54,#004aad);
+    padding:20px 50px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    color:white;
+    font-size:28px;
+    font-weight:bold;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    margin-left:25px;
+    font-size:18px;
+    font-weight:bold;
+}
+
+nav a:hover{
+    color:#87cefa;
+}
+
+/* CART */
+.container{
+    width:90%;
+    max-width:1000px;
+    margin:40px auto;
+}
+
+.title{
+    color:#001f54;
+    margin-bottom:25px;
+    font-size:35px;
+}
+
+.cart-item{
+    background:white;
+    padding:20px;
+    border-radius:12px;
+    margin-bottom:20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    box-shadow:0 3px 10px rgba(0,0,0,0.1);
+}
+
+.item-name{
+    font-size:22px;
+    color:#001f54;
+    font-weight:bold;
+}
+
+.item-price{
+    color:#004aad;
+    margin-top:5px;
+    font-size:18px;
+}
+
+.delete-btn{
+    background:#d62828;
+    color:white;
+    border:none;
+    padding:12px 20px;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:16px;
+}
+
+.delete-btn:hover{
+    background:#b00020;
+}
+
+.total{
+    background:white;
+    padding:20px;
+    border-radius:12px;
+    margin-top:20px;
+    box-shadow:0 3px 10px rgba(0,0,0,0.1);
+    font-size:28px;
+    font-weight:bold;
+    color:#001f54;
+}
+
+.buttons{
+    margin-top:30px;
+    display:flex;
+    gap:20px;
+}
+
+.clear-btn{
+    background:#001f54;
+    color:white;
+    border:none;
+    padding:18px 40px;
+    border-radius:10px;
+    font-size:22px;
+    cursor:pointer;
+}
+
+.buy-btn{
+    background:linear-gradient(90deg,#002d72,#0057d9);
+    color:white;
+    border:none;
+    padding:18px 40px;
+    border-radius:10px;
+    font-size:22px;
+    cursor:pointer;
+}
+
+.clear-btn:hover,
+.buy-btn:hover{
+    transform:scale(1.03);
+}
+
+.empty{
+    background:white;
+    padding:30px;
+    border-radius:12px;
+    text-align:center;
+    font-size:22px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">ZYVO SPORTS</div>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="product.html">Products</a>
+        <a href="contact.html">Contact</a>
+        <a href="login.html">Login</a>
+    </nav>
+</header>
+
+<div class="container">
+
+    <h1 class="title">🛒 Shopping Cart</h1>
+
+    <div id="cart-items"></div>
+
+    <div class="total">
+        Total Price: ₹<span id="total-price">0</span>
+    </div>
+
+    <div class="buttons">
+        <button class="clear-btn" onclick="clearCart()">
+            Clear Cart
+        </button>
+
+        <button class="buy-btn"
+                onclick="window.location.href='login.html'">
+            Buy Now
+        </button>
+    </div>
+
+</div>
+
+<script>
+
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+displayCart();
+
+function displayCart(){
+
+    let cartItems = document.getElementById("cart-items");
+    let totalPrice = document.getElementById("total-price");
+
+    let html = "";
+    let total = 0;
+
+    if(cart.length === 0){
+        cartItems.innerHTML =
+        `<div class="empty">Your cart is empty</div>`;
+        totalPrice.innerHTML = 0;
+        return;
+    }
+
+    cart.forEach((item,index)=>{
+
+        html += `
+        <div class="cart-item">
+
+            <div>
+                <div class="item-name">${item.name}</div>
+                <div class="item-price">₹${item.price}</div>
+            </div>
+
+            <button class="delete-btn"
+                    onclick="removeItem(${index})">
+                Delete
+            </button>
+
+        </div>
+        `;
+
+        total += Number(item.price);
+    });
+
+    cartItems.innerHTML = html;
+    totalPrice.innerHTML = total;
+}
+
+function removeItem(index){
+
+    cart.splice(index,1);
+
+    localStorage.setItem(
+        "cart",
+        JSON.stringify(cart)
+    );
+
+    displayCart();
+}
+
+function clearCart(){
+
+    cart=[];
+
+    localStorage.setItem(
+        "cart",
+        JSON.stringify(cart)
+    );
+
+    displayCart();
+}
+
+</script>
+
+</body>
+</html>

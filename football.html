@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Football Products</title>
+     <link rel="stylesheet" href="css/style.css">
+    <style>
+        h1{
+            text-align: center;
+        }
+        .product{
+    display:flex;
+    flex-wrap:wrap;
+    gap:30px;
+}
+
+.product-card{
+    width:250px;
+    min-height:450px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+}
+.card11,.card12,.card13,.card14,.card15,.card16,.card17,.card18,.card19,.card20{
+    width:250px;
+    min-height:450px;
+    text-align:center;
+    padding:20px;
+    box-shadow:0 4px 10px gray;
+    border-radius:15px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+}
+.category2{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center; /* optional */
+}
+    </style>
+</head>
+<body>
+    <h2 style="text-align: center;">Football</h2>
+   <!--FOOTBALL SECTION CATEGORY2-->
+<section id="football" class="category2">
+
+    <div class="card11">
+    <img src="images/football.jpg" width="150">
+    <h2>Football</h2>
+    <p>₹900</p>
+    <button onclick="addToCart('Football',900)">Add to Cart</button>
+    </div>
+
+    <div class="card12">
+    <img src="images/football kit.webp" width="150">
+    <h2>Football Kit</h2>
+    <p>₹3000</p>
+    <button onclick="addToCart('Football Kit',3000)">Add to Cart</button>
+    </div>
+
+    <div class="card13">
+    <img src="images/jersey football.webp" width="150">
+    <h2>Football Jersey Messi Edition</h2>
+    <p>₹949</p>
+    <button onclick="addToCart('Football Jersey Messi Edition',949)">Add to Cart</button>
+    </div>
+
+    <div class="card14">
+    <img src="images/jersey2football.webp" width="150">
+    <h2>Football Jersey New Edition</h2>
+    <p>₹949</p>
+    <button onclick="addToCart('Football Jersey New Edition',949)">Add to Cart</button>
+    </div>
+
+    <div class="card15">
+    <img src="images/football ball.webp" width="150">
+    <h2>Nivia Trainer Football</h2>
+    <p>₹670</p>
+    <button onclick="addToCart('Nivia Trainer Football',670)">Add to Cart</button>
+    </div>
+
+    <div class="card16">
+    <img src="images/football ball1.webp" width="150">
+    <h2>Cosco Delta Force Football Size 5</h2>
+    <p>₹855</p>
+    <button onclick="addToCart('Cosco Delta Force Football Size 5',855)">Add to Cart</button>
+    </div>
+
+    <div class="card17">
+    <img src="images/shoes football1.webp" width="150">
+    <h2>Puma ATTACANTO FG/AG Football Shoes</h2>
+    <p>₹2649</p>
+    <button onclick="addToCart('Puma ATTACANTO FG/AG Football Shoes',2649)">Add to Cart</button>
+    </div>
+
+    <div class="card18">
+    <img src="images/shoes football.webp" width="150">
+    <h2>Carbonite 7.0 Crest Football Studs</h2>
+    <p>₹2495</p>
+    <button onclick="addToCart('Carbonite 7.0 Crest Football Studs',2495)">Add to Cart</button>
+    </div>
+
+
+
+<div class="card19">
+    <img src="images/bag football.webp"width="150">
+    <h2>Nike Club Team Swoosh Ball Bags</h2>
+    <p>₹969</p>
+    <button onclick="addToCart('Nike Club Team Swoosh Ball Bags',969)">Add to Cart</button>
+</div>
+
+<div class="card20">
+    <img src="images/football kit.webp"width="150">
+    <h2>As Agility Kit For Football Kit</h2>
+    <p>₹830</p>
+   <button onclick="addToCart('AS Agility Advanced Training Football Kit',830)">Add to Cart</button>
+</div>
+
+</section>
+<script>
+function addToCart(name, price){
+
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    cart.push({
+        name: name,
+        price: price,
+        quantity: 1
+    });
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+
+    alert(name + " added to cart!");
+}
+</script>
+</body>
+</html>
